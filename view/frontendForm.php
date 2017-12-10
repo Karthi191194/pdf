@@ -227,7 +227,18 @@ objTo.appendChild(divadd)
 function remove_dynamic_fields(rid){
 $('.removeclass'+rid).remove();}
 </script>
+<script>
+$("#total,#taxper").keyup(function(){
+	var d = parseInt($('#total').val());
+	var e = parseInt($('#taxper').val());
+	var f = (e/100) * d;
+	$('#tax').val(f);
+	var c = d + f;
+	$('#totaltax').val(c);
+});
 
+
+</script>
 </html>
 <?php
 if(isset($_POST['submit'])){
