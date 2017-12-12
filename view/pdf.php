@@ -1,5 +1,35 @@
 <?php
 include('../MPDF/mpdf.php');
+echo "<pre>";
+print_r($_POST);
+
+$sender=$_POST['sender'];  
+$dated=$_POST['dated'];
+$invoiceno=$_POST['invoiceno']; 
+$deliverynote=$_POST['deliverynote'];
+$paymentmode=$_POST['paymentmode'];
+$supplierref=$_POST['supplierref'];
+$otherref=$_POST['otherref'];
+$buyer=$_POST['buyer'];
+$buyersorder=$_POST['buyersorder'];
+$buyersdated=$_POST['buyersdated'];
+$despatchno=$_POST['despatchno'];
+$deliverydate=$_POST['deliverydate'];
+$despatchedthrough=$_POST['despatchedthrough'];
+$destination=$_POST['destination'];
+$terms=$_POST['terms'];
+$total=$_POST['total'];
+$taxcgst=$_POST['taxcgst'];
+$cgstamount=$_POST['cgstamount'];
+$taxsgst=$_POST['taxsgst'];
+$sgstamount=$_POST['sgstamount'];
+$taxigst=$_POST['taxigst'];
+$igstamount=$_POST['igstamount'];
+$totaltax=$_POST['totaltax'];
+$totalround=$_POST['totalround'];
+$amountwords=$_POST['amountwords'];
+
+
 $mpdf=new mPDF();
 $mpdf->SetTitle('Sri SaiSakthi Services');
 
@@ -84,32 +114,30 @@ text-align:left;}
 <tr>
 <td rowspan='3' class='width-50' >
 <strong>
-G.B.International
-No 5, xxx,
-zzz
+$sender
 </strong>
 </td>
 <td class='width-25'>
-Invoice No<br><strong>G991</strong>
+Invoice No<br><strong>$invoiceno</strong>
 </td>
 <td class='width-25'>
-Dated<br><strong>9-Nov-2017</strong>
-</td>
-</tr>
-<tr>
-<td class='width-25'>
-Delivery Note<br><strong></strong>
-</td>
-<td class='width-25'>
-Mode/Terms of Payment<br><strong>30 Days</strong>
+Dated<br><strong>$dated</strong>
 </td>
 </tr>
 <tr>
 <td class='width-25'>
-Supplier's Ref<br><strong></strong>
+Delivery Note<br><strong>$deliverynote</strong>
 </td>
 <td class='width-25'>
-Other Reference(s)<br><strong>9-Nov-2017</strong>
+Mode/Terms of Payment<br><strong>$paymentmode</strong>
+</td>
+</tr>
+<tr>
+<td class='width-25'>
+Supplier's Ref<br><strong>$supplierref</strong>
+</td>
+<td class='width-25'>
+Other Reference(s)<br><strong>$otherref</strong>
 </td>
 </tr>
 <tr>
@@ -118,37 +146,35 @@ Other Reference(s)<br><strong>9-Nov-2017</strong>
 Buyer:
 </strong>
 <br>
-Sri Sai Sakthi Services
-No 5, xxx,
-zzz
+$buyer
 </td>
 <td class='width-25'>
-Buyer's Order No<br><strong></strong>
+Buyer's Order No<br><strong>$buyersorder</strong>
 </td>
 <td class='width-25'>
-Dated<br><strong></strong>
+Dated<br><strong>$buyersdated</strong>
 </td>
 </tr>
 <tr>
 <td class='width-25'>
-Despatch Document No<br><strong></strong>
+Despatch Document No<br><strong>$despatchno</strong>
 </td>
 <td class='width-25'>
-Delivery Note Date<br><strong></strong>
+Delivery Note Date<br><strong>$deliverydate</strong>
 </td>
 </tr>
 <tr>
 <td class='width-25'>
-Despatched through<br><strong>Door Delivery</strong>
+Despatched through<br><strong>$despatchedthrough</strong>
 </td>
 <td class='width-25'>
-Destination<br><strong></strong>
+Destination<br><strong>$destination</strong>
 </td>
 </tr>
 <tr>
 <td colspan='2' style='height:50px;'>
 Terms of Delivery<br>
-<strong>
+<strong>$terms
 </strong>
 </td>
 </tr>
@@ -243,5 +269,6 @@ $mpdf->Output($pdfName, 'I');   exit;
 //to download automatically
 //$mpdf->Output($pdfName, 'D');   exit;
 //to download in folder
-//$mpdf->Output('D:\KARTHI\Bangalore\aa.pdf','F');   exit;
+//$mpdf->Output('D:\KARTHI\Bangalore\aa.pdf','F');   exit; 
+
  ?>

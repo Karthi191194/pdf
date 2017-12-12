@@ -4,28 +4,33 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
 <div><h1 style="text-align:center;">TAX INVOICE</h1></div>
-<form action="" method="POST">
+
+<form action="pdf.php" method="POST">
     <div class="container-fluid">
         <form>
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="sender">Sender</label>
-                        <textarea class="form-control" rows="5" name="sender" id="sender"></textarea>
+                        <textarea class="form-control" rows="5" name="sender" id="sender">
+						Sri Sai Sakthi Services
+						New No 29, Reddy Street,Koratthur, Chennai-600080,TamilNadu.
+						GSTIN/UIIN:33BKVPS6894L1ZW
+						</textarea>
                     </div>
                 </div>
 
                 <div class="col-sm-2">
                     <div class="form-group">
                         <label for="invoiceno">Invoice No</label>
-                        <input type="text" class="form-control" name="invoiceno" id="invoiceno">
+                        <input type="text" class="form-control" name="invoiceno" id="invoiceno" required="true">
                     </div>
                 </div>
                 <div class="col-sm-2">
@@ -78,7 +83,7 @@
                 <div class="col-sm-2">
                     <div class="form-group">
                         <label for="buyersdated">Dated</label>
-                        <input type="text" class="form-control" name="buyersdated" id="buyersdated">
+                        <input type="date" class="form-control" name="buyersdated" id="buyersdated">
                     </div>
                 </div>
                 <div class="col-sm-2">
@@ -90,7 +95,7 @@
                 <div class="col-sm-2">
                     <div class="form-group">
                         <label for="deliverydate">Delivery Note Date</label>
-                        <input type="text" class="form-control" name="deliverydate" id="deliverydate">
+                        <input type="date" class="form-control" name="deliverydate" id="deliverydate">
                     </div>
                 </div>
 				                <div class="col-sm-2">
@@ -173,11 +178,56 @@
                 </div>
                 </div>
 				<div class="row">
-				<div class="col-sm-10"></div>
+				<div class="col-sm-8"></div>
+				      <div class="col-sm-2">
+                    <div class="form-group">
+<label for="taxcgst">CGST(%)</label>
+<div class="input-group">
+                        <input type="text" class="form-control" id="taxcgst" name="taxcgst" value="9" placeholder="CGST">
+						<span class="input-group-addon"><strong>%</strong></span>
+                    </div>
+                    </div>
+                </div>
 				                <div class="col-sm-2">
                     <div class="form-group">
-<label for="tax">Tax (Rs)</label>
-                        <input type="text" class="form-control" id="tax" name="tax" placeholder="Tax">
+<label for="cgstamount">CGST(Rs)</label>
+                        <input type="text" class="form-control" id="cgstamount" name="cgstamount" placeholder="Tax" readonly>
+                    </div>
+                </div>
+			</div>
+			<div class="row">
+				<div class="col-sm-8"></div>
+				      <div class="col-sm-2">
+                    <div class="form-group">
+<label for="taxsgst">SGST(%)</label>
+<div class="input-group">
+                        <input type="text" class="form-control" id="taxsgst" name="taxsgst" value="9" placeholder="SGST">
+						<span class="input-group-addon"><strong>%</strong></span>
+                    </div>
+                    </div>
+                </div>
+				                <div class="col-sm-2">
+                    <div class="form-group">
+<label for="sgstamount">CGST(Rs)</label>
+                        <input type="text" class="form-control" id="sgstamount" name="sgstamount" placeholder="Tax" readonly>
+                    </div>
+                </div>
+			</div>
+			<div class="row">
+				<div class="col-sm-8"></div>
+				      <div class="col-sm-2">
+                    <div class="form-group">
+<label for="taxigst">IGST(%)</label>
+<div class="input-group">
+                        <input type="text" class="form-control" id="taxigst" name="taxigst" value="0" placeholder="IGST">
+						<span class="input-group-addon"><strong>%</strong></span>
+                    </div>
+                    </div>
+                </div>
+				                <div class="col-sm-2">
+                    <div class="form-group">
+<label for="igstamount">IGST(Rs)</label>
+                        <input type="text" class="form-control" id="igstamount" name="igstamount"  placeholder="Tax" readonly>
                     </div>
                 </div>
 			</div>
@@ -185,16 +235,25 @@
 							<div class="col-sm-10"></div>
 				                <div class="col-sm-2">
                     <div class="form-group">
-<label for="amount">Amount (Rs)</label>
-                        <input type="text" class="form-control" id="amount" name="amount" placeholder="Total + Tax">
+<label for="totaltax">Amount (Rs)</label>
+                        <input type="text" class="form-control" id="totaltax" name="totaltax" placeholder="Total + Tax" readonly>
+                    </div>
+                </div>
+			</div>
+			<div class="row">
+							<div class="col-sm-10"></div>
+				                <div class="col-sm-2">
+                    <div class="form-group">
+<label for="totalround">Round Off (Rs) </label>
+                        <input type="text" class="form-control" id="totalround" name="totalround" placeholder="Total" readonly>
                     </div>
                 </div>
 			</div>
 			            <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
-					    <label for="sender">Amount Chargrable (in words)</label>
-                        <textarea class="form-control" rows="2" name="amount" id="amount" placeholder="Amount Chargrable (in words)"></textarea>
+					    <label for="amountwords">Amount Chargrable (in words)</label>
+                        <textarea class="form-control" rows="2" name="amountwords" id="amountwords" placeholder="Amount Chargrable (in words)"></textarea>
                     </div>
                 </div>
             </div>
@@ -211,13 +270,9 @@
 </form>
 </body>
 <script>
-
-
 var room = 1;
 function dynamic_fields(){
-
 room++;
-
 var objTo = document.getElementById('dym_fields')
 var divadd = document.createElement("div");
 divadd.setAttribute("class","form-group removeclass"+room);
@@ -226,22 +281,27 @@ objTo.appendChild(divadd)
 }
 function remove_dynamic_fields(rid){
 $('.removeclass'+rid).remove();}
+
 </script>
 <script>
-$("#total,#taxper").keyup(function(){
+
+$("#total,#taxcgst,#taxsgst,#taxigst").keyup(function(){
 	var d = parseInt($('#total').val());
-	var e = parseInt($('#taxper').val());
+	var e = parseInt($('#taxcgst').val());
+	var g = parseInt($('#taxsgst').val());
+	var h = parseInt($('#taxigst').val());
 	var f = (e/100) * d;
-	$('#tax').val(f);
-	var c = d + f;
+	$('#cgstamount').val(f);
+	var i = (g/100) * d;
+	$('#sgstamount').val(i);
+	var j = (h/100) * d;
+	$('#igstamount').val(j);
+	var c = d + f + i + j;
 	$('#totaltax').val(c);
+	var k = c.toFixed();
+	$('#totalround').val(k);
 });
 
-
 </script>
+
 </html>
-<?php
-if(isset($_POST['submit'])){
-	foreach($_POST['desc'] as $key => $value){ echo $value;}
-}
-?>
